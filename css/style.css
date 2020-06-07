@@ -15,6 +15,7 @@
   --primary-white-color: #ffffff;
   --secondary-bg-color: #f5f4fa;
   --primary-svg-color: #afb1b8;
+  --cubick: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -102,10 +103,27 @@ a {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
+  transition: color 250ms var(--cubick);
 }
 
-.site-nav .link.current {
+.link.current {
   color: var(--accent-color);
+
+  position: relative;
+}
+
+.link.current::after {
+  content: "";
+
+  position: absolute;
+  bottom: 0;
+
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--accent-color);
 }
 
 .site-nav .link:hover,
@@ -134,6 +152,8 @@ a {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
+  transition: color 250ms var(--cubick);
 }
 
 .contacts-nav .link:hover,
@@ -144,6 +164,8 @@ a {
 .contacts-icon {
   margin-right: 10px;
   fill: currentColor;
+
+  transition: fill 250ms var(--cubick);
 }
 
 .contacts-icon:hover,
@@ -205,6 +227,8 @@ a {
   font-size: 16px;
   line-height: 1.87;
   letter-spacing: 0.06em;
+
+  transition: background-color 250ms var(--cubick);
 }
 
 .hero .button:hover,
@@ -281,7 +305,17 @@ a {
   margin-left: 30px;
 }
 
+.services .item {
+  position: relative;
+}
+
 .services-name {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 27px;
+  padding-bottom: 27px;
+
   background-color: rgba(47, 48, 58, 0.8);
   color: var(--primary-white-color);
   font-weight: 700;
@@ -340,6 +374,9 @@ a {
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
+
+  transition: background-color 250ms var(--cubick), 250ms var(--cubick),
+    fill 250ms var(--cubick);
 }
 
 .socials:hover,
@@ -384,6 +421,8 @@ a {
   border-radius: 4px;
   height: 90px;
   fill: var(--primary-svg-color);
+
+  transition: border 250ms var(--cubick), fill 250ms var(--cubick);
 }
 
 .first-client {
@@ -455,6 +494,8 @@ a {
 
 .address .link:not(:last-child) {
   margin-bottom: 9px;
+
+  transition: color 250ms var(--cubick);
 }
 
 .footer .link {
@@ -521,6 +562,8 @@ a {
   line-height: 1.87;
   letter-spacing: 0.06em;
   text-align: center;
+
+  transition: background-color 250ms var(--cubick);
 }
 
 .subscription .button:hover,
@@ -559,6 +602,8 @@ a {
   font-size: 16px;
   line-height: 1.62;
   text-align: center;
+
+  transition: background-color 250ms var(--cubick), color 250ms var(--cubick);
 }
 
 .filters .button + .button {
@@ -586,6 +631,8 @@ a {
   margin-bottom: 30px;
   margin-right: 30px;
   padding-bottom: 20px;
+
+  transition: box-shadow 250ms var(--cubick);
 }
 
 .work-examples .item:nth-child(3n) {
@@ -608,12 +655,8 @@ a {
   line-height: 1.87;
 }
 
-.project-image {
-  margin-bottom: 20px;
-}
-
 .project-title {
-  margin-top: 0px;
+  margin-top: 20px;
   margin-bottom: 4px;
   margin-left: 24px;
   margin-right: 24px;
@@ -630,9 +673,27 @@ a {
   margin-right: 24px;
 }
 
+.project-box {
+  position: relative;
+  overflow: hidden;
+}
+
 .project .text {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  transform: translateY(100%);
+  transition: transform 250ms var(--cubick);
+
   color: var(--primary-white-color);
   background-color: rgba(33, 150, 243, 0.9);
   font-size: 18px;
   line-height: 1.56;
+  padding: 63px 24px;
+}
+
+.work-examples .item:hover .project .text {
+  transform: translateY(0);
 }
